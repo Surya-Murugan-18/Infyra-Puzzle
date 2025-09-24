@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt - Interactive Puzzle Adventure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Entry Page -->
+    <div id="entryPage" class="page-container active">
+        <div class="ancient-bg">
+            <div class="floating-particles"></div>
+            <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                    <div class="popup-man-container mb-4">
+                        <img src="public/ancient-wise-explorer-character-with-hat-and-adven.jpg.png" alt="Popup Man" class="popup-man">
+                    </div>
+                    <div class="welcome-text-box">
+                        <h1 class="ancient-title mb-3">Welcome, Traveler!</h1>
+                        <p class="ancient-text mb-4">To begin your journey, solve the Infyra Puzzle and discover the ancient secrets that await.</p>
+                        <button id="startPuzzleBtn" class="btn treasure-btn">
+                            <i class="fas fa-play me-2"></i>Start Puzzle
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle Page -->
+    <div id="puzzlePage" class="page-container">
+        <div class="parchment-bg">
+            <div class="container py-5">
+                <div class="text-center mb-4">
+                    <h1 class="puzzle-title">Arrange the Infyra Puzzle</h1>
+                    <div class="timer-display">
+                        <i class="fas fa-clock me-2"></i>
+                        <span id="timer">0:00</span>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="puzzle-container">
+                            <div id="puzzleGrid" class="puzzle-grid">
+                                <!-- Puzzle tiles will be generated here -->
+                            </div>
+                            
+                            <!-- Completion overlay -->
+                            <div id="completionOverlay" class="completion-overlay">
+                                <div class="text-center">
+                                    <div class="celebration-icon">🎉</div>
+                                    <h2 class="completion-title">Puzzle Complete!</h2>
+                                    <p class="completion-text">Your secret code is: <strong>INFYRA</strong></p>
+                                    <p class="completion-subtitle">The treasure awaits...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button id="shuffleBtn" class="btn btn-outline-warning">
+                                <i class="fas fa-random me-2"></i>Shuffle Again
+                            </button>
+                            <!-- Removed reset button as requested -->
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <p class="instruction-text">Click on tiles to swap them with each other. Arrange all tiles to reveal the complete Infyra image.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Treasure Box Popup -->
+    <div id="treasurePopup" class="treasure-popup">
+        <div class="treasure-overlay">
+            <div class="treasure-content">
+                <div class="treasure-chest-container">
+                    <div class="treasure-chest">
+                        <div class="chest-lid"></div>
+                        <div class="chest-base">
+                            <div class="chest-lock"></div>
+                            <div class="treasure-glow"></div>
+                            <div class="treasure-items">
+                                <div class="gem gem-1"></div>
+                                <div class="gem gem-2"></div>
+                                <div class="gem gem-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sparkles">
+                        <i class="fas fa-sparkles sparkle-1"></i>
+                        <i class="fas fa-sparkles sparkle-2"></i>
+                        <i class="fas fa-sparkles sparkle-3"></i>
+                    </div>
+                </div>
+
+                <h2 class="treasure-title">The Treasure Awaits!</h2>
+                <p class="treasure-description">The ancient chest has opened, revealing its secrets. Enter the sacred code to claim your treasure.</p>
+
+                <div id="treasureInput" class="treasure-input-section">
+                    <input type="text" id="secretCode" class="form-control treasure-input" placeholder="Enter the Secret Code" maxlength="10">
+                    <div id="errorMessage" class="error-message">❌ Incorrect code, try again!</div>
+                    <button id="unlockBtn" class="btn treasure-btn mt-3">
+                        <i class="fas fa-unlock me-2"></i>Unlock Treasure
+                    </button>
+                    <div class="hint-text mt-3">
+                        <small>Hint: Look closely at the puzzle you just solved...</small>
+                    </div>
+                </div>
+
+                <div id="successMessage" class="success-message">
+                    <div class="success-icon">✅</div>
+                    <h3>Treasure Unlocked!</h3>
+                    <p>Opening the Algorift map...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Replaced Final Image Display with Algorift Map -->
+    <div id="mapPage" class="page-container">
+        <div class="map-bg">
+            <div class="container-fluid py-3">
+                <div class="text-center mb-3">
+                    <h1 class="map-title">Algorift Map</h1>
+                    <p class="map-subtitle">Navigate to your next destination</p>
+                </div>
+                
+                <div class="map-container">
+                    <img src="public/algo-map.jpg" alt="Algorift Map" class="map-image" id="mapImage">
+                    
+                    <!-- Added clickable treasure spot in bottom right -->
+                    
+                </div>
+
+                <div class="map-actions mt-4 text-center">
+                    <button id="playAgainBtn" class="btn treasure-btn me-3">
+                        <i class="fas fa-redo me-2"></i>Play Again
+                    </button>
+                    <button id="exitBtn" class="btn btn-outline-light">
+                        <i class="fas fa-sign-out-alt me-2"></i>Exit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Added Venue Details Popup -->
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

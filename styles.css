@@ -1,0 +1,1239 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", serif;
+  overflow-x: hidden;
+  background: #1a1a1a;
+  color: #f4f1e8;
+  /* Added touch-action for better mobile interaction */
+  touch-action: manipulation;
+}
+
+.page-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
+  /* Added overflow handling for mobile */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-container.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+/* Ancient Background */
+.ancient-bg {
+  background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 50%, #0f0704 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.ancient-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Floating Particles */
+.floating-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-particles::before,
+.floating-particles::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #daa520;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-particles::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-particles::after {
+  top: 60%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Popup Man */
+.popup-man-container {
+  animation: fadeInUp 1s ease-out;
+}
+
+.popup-man {
+  padding: 25px;
+  max-width: 500px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(218, 165, 32, 0.3));
+  /* Added responsive sizing for mobile */
+  width: 100%;
+  max-width: min(500px, 80vw);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Welcome Text Box */
+.welcome-text-box {
+  background: rgba(139, 69, 19, 0.2);
+  border: 2px solid #daa520;
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(218, 165, 32, 0.2);
+  animation: fadeInUp 1s ease-out 0.5s both;
+  /* Added responsive width and margin */
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ancient-title {
+  color: #daa520;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ancient-text {
+  color: #f4f1e8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Treasure Button */
+.treasure-btn {
+  background: linear-gradient(45deg, #daa520, #b8860b);
+  border: none;
+  color: #1a0f0a;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+  position: relative;
+  overflow: hidden;
+  /* Added touch-friendly sizing */
+  min-height: 48px;
+  min-width: 120px;
+}
+
+.treasure-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.treasure-btn:hover::before {
+  left: 100%;
+}
+
+.treasure-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+  color: #1a0f0a;
+}
+
+/* Added active state for mobile touch feedback */
+.treasure-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(218, 165, 32, 0.3);
+}
+
+/* Parchment Background */
+.parchment-bg {
+  background: linear-gradient(135deg, #f4f1e8 0%, #e8dcc0 50%, #d4c4a0 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+.parchment-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 30% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(160, 82, 45, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Puzzle Styles */
+.puzzle-title {
+  color: #8b4513;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+.timer-display {
+  color: #654321;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.puzzle-container {
+  position: relative;
+  background: rgba(139, 69, 19, 0.1);
+  border: 3px solid #8b4513;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+  /* Added responsive width and centering */
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  max-width: 400px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  background: #8b4513;
+  padding: 4px;
+  border-radius: 8px;
+  /* Added responsive sizing */
+  width: 100%;
+}
+
+.puzzle-tile {
+  aspect-ratio: 1;
+  border: 2px solid #654321;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  background-size: 400% 400%;
+  /* Added touch-friendly interaction */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.puzzle-tile.empty-tile {
+  background: #3a2317;
+  border: 2px dashed #8b4513;
+  cursor: default;
+}
+
+.puzzle-tile:not(.empty-tile):hover {
+  transform: scale(1.02);
+  border-color: #daa520;
+  box-shadow: 0 2px 8px rgba(218, 165, 32, 0.3);
+  z-index: 10;
+}
+
+/* Added touch/active states for mobile */
+.puzzle-tile:not(.empty-tile):active {
+  transform: scale(0.98);
+  border-color: #daa520;
+  box-shadow: 0 1px 4px rgba(218, 165, 32, 0.5);
+}
+
+.puzzle-tile.completed {
+  border-color: #daa520;
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+}
+
+.tile-number {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 10px;
+  padding: 1px 3px;
+  border-radius: 2px;
+  opacity: 0.8;
+  font-weight: bold;
+  /* Made tile numbers more visible on mobile */
+  pointer-events: none;
+}
+
+/* Completion Overlay */
+.completion-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.completion-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.celebration-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.completion-title {
+  color: #daa520;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.completion-text {
+  color: #f4f1e8;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.completion-subtitle {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.instruction-text {
+  color: #654321;
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto;
+  /* Added responsive text sizing */
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Treasure Popup */
+.treasure-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.treasure-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.treasure-overlay {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  /* Added overflow handling for mobile */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.treasure-content {
+  background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+  border: 3px solid #daa520;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(218, 165, 32, 0.3);
+  /* Added responsive sizing and max-height */
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+}
+
+/* Treasure Chest */
+.treasure-chest-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.treasure-chest {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.chest-base {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, #8b4513, #654321);
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chest-lid {
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom, #a0522d, #8b4513);
+  border-radius: 10px 10px 0 0;
+  position: absolute;
+  top: 0;
+  transform-origin: bottom;
+  transition: transform 1s ease;
+  z-index: 2;
+}
+
+.treasure-chest.opened .chest-lid {
+  transform: rotateX(-45deg) translateY(-10px);
+}
+
+.chest-lock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background: #daa520;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.treasure-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to top, rgba(218, 165, 32, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.treasure-chest.opened .treasure-glow {
+  opacity: 1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.treasure-items {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 1s ease 0.5s;
+}
+
+.treasure-chest.opened .treasure-items {
+  opacity: 1;
+}
+
+.gem {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.gem-1 {
+  background: #daa520;
+}
+.gem-2 {
+  background: #ff6b6b;
+  animation-delay: 0.3s;
+}
+.gem-3 {
+  background: #4ecdc4;
+  animation-delay: 0.6s;
+}
+
+.sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.sparkles i {
+  position: absolute;
+  color: #daa520;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.sparkle-1 {
+  top: -10px;
+  left: -10px;
+  font-size: 1.5rem;
+}
+.sparkle-2 {
+  top: -10px;
+  right: -10px;
+  font-size: 1rem;
+  animation-delay: 0.5s;
+}
+.sparkle-3 {
+  bottom: -10px;
+  left: 50%;
+  font-size: 1.2rem;
+  animation-delay: 1s;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Treasure Popup Text */
+.treasure-title {
+  color: #daa520;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.treasure-description {
+  color: #f4f1e8;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Treasure Input */
+.treasure-input-section {
+  margin-bottom: 2rem;
+}
+
+.treasure-input {
+  background: rgba(244, 241, 232, 0.1);
+  border: 2px solid #8b4513;
+  color: #f4f1e8;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  /* Added mobile-friendly input styling */
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 1rem auto;
+  display: block;
+  -webkit-appearance: none;
+  font-size: max(16px, 1.2rem); /* Prevents zoom on iOS */
+}
+
+.treasure-input:focus {
+  background: rgba(244, 241, 232, 0.2);
+  border-color: #daa520;
+  color: #f4f1e8;
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+  outline: none;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+  opacity: 1;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.hint-text {
+  color: #999;
+  font-style: italic;
+}
+
+/* Success Message */
+.success-message {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.success-message.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.success-message h3 {
+  color: #4ecdc4;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-message p {
+  color: #f4f1e8;
+}
+
+/* Final Image Page */
+.final-bg {
+  background: linear-gradient(135deg, #1a0f0a 0%, #2c1810 50%, #1a0f0a 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+.final-title {
+  color: #daa520;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.final-subtitle {
+  color: #f4f1e8;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.final-image-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.final-image {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border: 5px solid #daa520;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(218, 165, 32, 0.3);
+}
+
+.image-glow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, #daa520, #b8860b, #daa520);
+  border-radius: 20px;
+  z-index: -1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.final-actions {
+  animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+/* Map Page Styles */
+.map-bg {
+  background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 50%, #0f0704 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  /* Added flexbox centering */
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center; /* vertical center */
+  /* Added responsive padding */
+  padding: 20px;
+}
+
+/* Remove default spacing from container-fluid inside */
+.map-bg .container-fluid {
+  text-align: center;
+  /* Added responsive width */
+  width: 100%;
+  max-width: 1200px;
+}
+
+.map-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.map-title {
+  color: #daa520;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.map-subtitle {
+  color: #f4f1e8;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 90vw;
+  max-height: 70vh;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.map-image {
+  width: 500px;
+  height: 500px;
+  border: 5px solid #daa520;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(218, 165, 32, 0.3);
+  display: block;
+  /* Added responsive sizing */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Treasure Spot Styling */
+.treasure-spot {
+  position: absolute;
+  bottom: 8%;
+  right: 8%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(218, 165, 32, 0.8);
+  border: 3px solid #daa520;
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+  /* Added touch-friendly sizing and interaction */
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.treasure-spot:hover {
+  transform: scale(1.2);
+  background: rgba(218, 165, 32, 1);
+  box-shadow: 0 0 20px rgba(218, 165, 32, 0.8);
+}
+
+/* Added active state for mobile */
+.treasure-spot:active {
+  transform: scale(1.1);
+  background: rgba(218, 165, 32, 1);
+}
+
+.treasure-spot-glow {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(circle, rgba(218, 165, 32, 0.4), transparent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.treasure-icon {
+  color: #1a0f0a;
+  font-size: 1.2rem;
+  z-index: 2;
+  position: relative;
+}
+
+.map-actions {
+  animation: fadeInUp 1s ease-out 0.9s both;
+  /* Added responsive button spacing */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Venue Popup Styles */
+.venue-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.venue-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.venue-overlay {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  /* Added overflow handling for mobile */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.venue-content {
+  background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+  border: 3px solid #daa520;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(218, 165, 32, 0.3);
+  animation: slideInUp 0.5s ease-out;
+  /* Added responsive sizing and max-height */
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+}
+
+.venue-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #daa520;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  /* Added touch-friendly sizing */
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.venue-close:hover {
+  background: rgba(218, 165, 32, 0.2);
+  transform: scale(1.1);
+}
+
+/* Added active state for mobile */
+.venue-close:active {
+  background: rgba(218, 165, 32, 0.3);
+  transform: scale(1.05);
+}
+
+.venue-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.venue-icon {
+  font-size: 3rem;
+  color: #daa520;
+  margin-bottom: 1rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.venue-title {
+  color: #daa520;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.venue-name {
+  color: #f4f1e8;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.venue-info {
+  margin-bottom: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  color: #f4f1e8;
+}
+
+.info-item i {
+  color: #daa520;
+  margin-right: 0.75rem;
+  margin-top: 0.2rem;
+  min-width: 16px;
+}
+
+.venue-description {
+  background: rgba(139, 69, 19, 0.2);
+  border: 1px solid #8b4513;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #f4f1e8;
+  line-height: 1.6;
+}
+
+.venue-actions {
+  text-align: center;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .ancient-title {
+    font-size: 2rem;
+  }
+
+  .puzzle-title {
+    font-size: 2rem;
+  }
+
+  .puzzle-grid {
+    max-width: min(350px, 90vw);
+    gap: 3px;
+  }
+
+  .puzzle-container {
+    padding: 15px;
+    margin: 0 10px;
+  }
+
+  .treasure-title {
+    font-size: 1.5rem;
+  }
+
+  .map-title {
+    font-size: 2rem;
+  }
+
+  .map-container {
+    max-width: 95vw;
+    max-height: 60vh;
+  }
+
+  .map-image {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+  }
+
+  .treasure-spot {
+    width: 44px;
+    height: 44px;
+    bottom: 10%;
+    right: 10%;
+  }
+
+  .treasure-icon {
+    font-size: 1.1rem;
+  }
+
+  .welcome-text-box {
+    margin: 0 15px;
+    padding: 1.5rem;
+  }
+
+  .ancient-text {
+    font-size: 1rem;
+  }
+
+  .treasure-btn {
+    font-size: 1rem;
+    padding: 14px 24px;
+  }
+
+  .map-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .map-actions .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .welcome-text-box {
+    padding: 1.5rem;
+    margin: 0 10px;
+  }
+
+  .puzzle-container {
+    padding: 15px;
+    margin: 0 5px;
+  }
+
+  .puzzle-grid {
+    max-width: min(300px, 85vw);
+    gap: 2px;
+  }
+
+  .treasure-content {
+    padding: 1.5rem;
+    margin: 10px;
+  }
+
+  .venue-content {
+    padding: 1.5rem;
+    margin: 10px;
+  }
+
+  .ancient-title {
+    font-size: 1.75rem;
+  }
+
+  .puzzle-title {
+    font-size: 1.75rem;
+  }
+
+  .map-title {
+    font-size: 1.75rem;
+  }
+
+  .treasure-title {
+    font-size: 1.3rem;
+  }
+
+  .venue-title {
+    font-size: 1.5rem;
+  }
+
+  .venue-name {
+    font-size: 1.2rem;
+  }
+
+  .popup-man {
+    max-width: 70vw;
+    padding: 15px;
+  }
+
+  .instruction-text {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .timer-display {
+    font-size: 1.1rem;
+  }
+
+  .completion-title {
+    font-size: 1.5rem;
+  }
+
+  .completion-text {
+    font-size: 1rem;
+  }
+
+  .treasure-input {
+    font-size: max(16px, 1.1rem);
+    padding: 14px;
+  }
+}
+
+/* Added landscape orientation support for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .page-container {
+    overflow-y: auto;
+  }
+
+  .puzzle-container {
+    margin: 10px auto;
+  }
+
+  .puzzle-grid {
+    max-width: min(280px, 40vh);
+  }
+
+  .welcome-text-box {
+    padding: 1rem;
+  }
+
+  .ancient-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .popup-man {
+    max-width: 200px;
+    padding: 10px;
+  }
+
+  .treasure-content {
+    padding: 1rem;
+    max-height: 85vh;
+  }
+
+  .venue-content {
+    padding: 1rem;
+    max-height: 85vh;
+  }
+}
+
+/* Added high DPI display support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .puzzle-tile {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
